@@ -56,6 +56,7 @@
     (plain . txt)
     (texinfo . texi)
     (zimwiki . zim)))
+(defvar meq/var/riot-killed nil)
 
 ;;;###autoload
 (defun meq/update-elist (econs) (add-to-list 'meq/var/riot-elist econs))
@@ -66,10 +67,14 @@
 (defun meq/after-shave nil
     (let* ((ext-name (meq/get-ext-name-from-file)))
         (when ext-name
-            (funcall (meq/inconcat "org-pandoc-export-to-" (symbol-name ext-name))))))
+            (funcall (meq/inconcat "org-pandoc-export-to-" (symbol-name ext-name)))
+            (when meq/var/riot-killed
+                (while (equal (process-status (car (last (process-list)))) 'run))
+                (setq meq/var/riot-killed nil)))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
 (defun meq/before-kill-buffer nil (interactive) (when (meq/get-ext-name-from-file)
+    (setq meq/var/riot-killed t)
     (delete-file buffer-file-name)))
 (add-hook 'kill-buffer-hook #'meq/before-kill-buffer)
 
