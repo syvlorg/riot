@@ -49,7 +49,7 @@
     (plain . txt)
     (texinfo . texi)
     (zimwiki . zim)))
-(defvar meq/var/riot-killed nil)
+(defvar meq/var/riot-alist nil)
 
 ;;;###autoload
 (defun meq/update-elist (econs) (add-to-list 'meq/var/riot-elist econs))
@@ -59,17 +59,17 @@
 
 (defun meq/after-shave nil
     (let* ((ext-name (meq/get-ext-name-from-file)))
-        (when ext-name
+        (when (and ext-name (buffer-modified-p))
             (funcall (meq/inconcat "org-pandoc-export-to-" (symbol-name ext-name)))
-            (when meq/var/riot-killed
-                (while (equal (process-status (car (last (process-list)))) 'run))
-                (setq meq/var/riot-killed nil)))))
+            (while (equal (process-status (car (last (process-list)))) 'run)))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
-(defun meq/before-kill-buffer nil (interactive) (when (meq/get-ext-name-from-file)
-    (setq meq/var/riot-killed t)
-    (delete-file buffer-file-name)))
+(defun meq/before-kill-buffer nil (interactive) (when (meq/get-ext-name-from-file) (delete-file buffer-file-name)))
 (add-hook 'kill-buffer-hook #'meq/before-kill-buffer)
+
+(defun meq/before-kill-emacs nil (interactive)
+    (mapc #'(lambda (fcons) (interactive) (kill-buffer (get-file-buffer (car fcons)))) meq/var/riot-list))
+(add-hook 'kill-emacs-hook #'meq/before-kill-emacs)
 
 (defun meq/ffns-advice (func &rest args)
     (let* ((input-buffer (apply func args))
@@ -77,10 +77,10 @@
             (split-input (split-string input "\\."))
             (ext (car (last split-input)))
             (ext-name (meq/get-ext-name-from-ext (intern ext)))
-            (output (s-chop-suffix "." (string-join (append (butlast split-input) (list "org")) "."))))
-        (if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
+            (output (s-chop-suffix "." (string-join (append (butlast split-input) (list (meq/timestamp) ".org")) "."))))
+	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
             input-buffer
-            (call-process "pandoc" nil nil nil input "-f" (symbol-name ext-name) "-t" "org" "-so" output)
+            (apply #'call-process "pandoc" nil nil nil input "-f" (symbol-name ext-name) "-t" "org" "-so" output meq/var/riot-alist)
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
             (apply func `(,output ,@args)))))
 
