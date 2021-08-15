@@ -58,9 +58,15 @@
 (defun meq/get-ext-name-from-ext (&optional ext) (interactive) (car (rassoc (or ext (meq/get-ext)) meq/var/riot-elist)))
 
 (defun meq/after-shave nil
-    (let* ((ext-name (meq/get-ext-name-from-file)))
-        (when (and ext-name (buffer-modified-p))
+    (let* ((ext-name (meq/get-ext-name-from-file))
+	    ;; (ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
+	    ;; (split-bfn (split-string buffer-file-name "\\."))
+            ;; (input (s-chop-suffix "." (string-join (append (butlast split-bfn 2) (list (meq/timestamp) ext)) ".")))
+            ;; (output (s-chop-suffix "." (string-join (append (butlast split-bfn 2) (list ext)) ".")))
+)
+        (when ext-name
             (funcall (meq/inconcat "org-pandoc-export-to-" (symbol-name ext-name)))
+	    ;; (rename-file input output t)
             (while (equal (process-status (car (last (process-list)))) 'run)))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
@@ -77,7 +83,8 @@
             (split-input (split-string input "\\."))
             (ext (car (last split-input)))
             (ext-name (meq/get-ext-name-from-ext (intern ext)))
-            (output (s-chop-suffix "." (string-join (append (butlast split-input) (list (meq/timestamp) ".org")) "."))))
+            ;; (output (s-chop-suffix "." (string-join (append (butlast split-input) (list (meq/timestamp) "org")) "."))))
+            (output (s-chop-suffix "." (string-join (append (butlast split-input) (list "org")) "."))))
 	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
             input-buffer
             (apply #'call-process "pandoc" nil nil nil input "-f" (symbol-name ext-name) "-t" "org" "-so" output meq/var/riot-alist)
