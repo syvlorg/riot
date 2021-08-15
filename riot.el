@@ -51,10 +51,28 @@
     (zimwiki . zim)))
 (defvar meq/var/riot-alist nil)
 
+(defun meq/org-pandoc-export-advice (format a s v b e &optional buf-or-open)
+  "General interface for Pandoc Export.
+If BUF-OR-OPEN is nil, output to file.  0, then open the file.
+t means output to buffer."
+  (unless (derived-mode-p 'org-mode)
+    (error "You must run this command in org-mode."))
+  (unless (executable-find org-pandoc-command)
+    (error "Pandoc (version 1.12.4 or later) can not be found."))
+  (setq org-pandoc-format format)
+  (org-export-to-file 'pandoc (org-export-output-file-name
+                               (concat (make-temp-name ".tmp") ".org") s)
+    a s v b e (lambda (f) (org-pandoc-run-to-buffer-or-file f format s buf-or-open))))
+
+(advice-add #'org-pandoc-export :override #'meq/org-pandoc-export-advice)
+
 ;;;###autoload
 (defun meq/update-elist (econs) (add-to-list 'meq/var/riot-elist econs))
 
+;;;###autoload
 (defun meq/get-ext-name-from-file nil (interactive) (cdr (assoc buffer-file-name meq/var/riot-list)))
+
+;;;###autoload
 (defun meq/get-ext-name-from-ext (&optional ext) (interactive) (car (rassoc (or ext (meq/get-ext)) meq/var/riot-elist)))
 
 (defun meq/after-shave nil
