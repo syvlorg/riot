@@ -114,7 +114,7 @@ t means output to buffer."
             input-buffer
             (apply #'call-process "pandoc" nil nil nil input "-f" (symbol-name ext-name) "-t" "org" "-so" output meq/var/riot-alist)
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
-            (apply func `(,output ,@args)))))
+            (unwind-protect (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
 
 ;; (add-hook 'emacs-startup-hook (lambda nil (interactive) (advice-add #'find-file-noselect :around #'meq/ffns-advice)))
 (advice-add #'find-file-noselect :around #'meq/ffns-advice)
