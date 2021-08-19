@@ -35,7 +35,6 @@
 (require 'meq)
 (require 'dash)
 (require 's)
-(require 'ox-pandoc)
 
 ;; Adapted From:
 ;; Answer: https://emacs.stackexchange.com/a/3402/31428
@@ -53,25 +52,14 @@
     (html5 . html)
     (latex . tex)
     (opendocument . xml)
+    (org . org)
     (plain . txt)
     (texinfo . texi)
     (zimwiki . zim)))
-(defvar meq/var/riot-alist nil)
+(defvar meq/var/riot-alists (mapcar #'(lambda (econs) (interactive) (cons (car econs) nil)) meq/var/riot-elist))
 
-(defun meq/org-pandoc-export-advice (format a s v b e &optional buf-or-open)
-  "General interface for Pandoc Export.
-If BUF-OR-OPEN is nil, output to file.  0, then open the file.
-t means output to buffer."
-  (unless (derived-mode-p 'org-mode)
-    (error "You must run this command in org-mode."))
-  (unless (executable-find org-pandoc-command)
-    (error "Pandoc (version 1.12.4 or later) can not be found."))
-  (setq org-pandoc-format format)
-  (org-export-to-file 'pandoc (org-export-output-file-name
-                               (concat (make-temp-name ".tmp") ".org") s)
-    a s v b e (lambda (f) (org-pandoc-run-to-buffer-or-file f format s buf-or-open))))
-
-(advice-add #'org-pandoc-export :override #'meq/org-pandoc-export-advice)
+(defun meq/riot-naming (split-input name-segment-list &rest butlast-body)
+  (s-chop-suffix "." (string-join (append (apply #'butlast split-input butlast-body) name-segment-list) ".")))
 
 ;;;###autoload
 (defun meq/update-elist (econs) (add-to-list 'meq/var/riot-elist econs))
@@ -84,14 +72,23 @@ t means output to buffer."
 
 (defun meq/after-shave nil
     (let* ((ext-name (meq/get-ext-name-from-file))
-	    ;; (ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
-	    ;; (split-bfn (split-string buffer-file-name "\\."))
-            ;; (input (s-chop-suffix "." (string-join (append (butlast split-bfn 2) (list (meq/timestamp) ext)) ".")))
-            ;; (output (s-chop-suffix "." (string-join (append (butlast split-bfn 2) (list ext)) ".")))
-)
+	          (ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
+	          (split-bfn (split-string buffer-file-name "\\."))
+            (output (meq/riot-naming split-bfn (list ext) 2)))
         (when ext-name
-            (funcall (meq/inconcat "org-pandoc-export-to-" (symbol-name ext-name)))
-	    ;; (rename-file input output t)
+            (apply #'call-process
+              "pandoc"
+              nil
+              nil
+              nil
+              buffer-file-name
+              "-f"
+              "org"
+              "-t"
+              (symbol-name ext-name)
+              "-so"
+              output
+              (cdr (assoc ext-name meq/var/riot-alists)))
             (while (equal (process-status (car (last (process-list)))) 'run)))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
@@ -108,15 +105,25 @@ t means output to buffer."
             (split-input (split-string input "\\."))
             (ext (car (last split-input)))
             (ext-name (meq/get-ext-name-from-ext (intern ext)))
-            ;; (output (s-chop-suffix "." (string-join (append (butlast split-input) (list (meq/timestamp) "org")) "."))))
-            (output (s-chop-suffix "." (string-join (append (butlast split-input) (list "org")) "."))))
+            (output (meq/riot-naming split-input (list (meq/timestamp) "org"))))
 	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
             input-buffer
-            (apply #'call-process "pandoc" nil nil nil input "-f" (symbol-name ext-name) "-t" "org" "-so" output meq/var/riot-alist)
+            (apply #'call-process
+              "pandoc"
+              nil
+              nil
+              nil
+              input
+              "-f"
+              (symbol-name ext-name)
+              "-t"
+              "org"
+              "-so"
+              output
+              (cdr (assoc 'org meq/var/riot-alists)))
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
             (unwind-protect (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
 
-;; (add-hook 'emacs-startup-hook (lambda nil (interactive) (advice-add #'find-file-noselect :around #'meq/ffns-advice)))
 (advice-add #'find-file-noselect :around #'meq/ffns-advice)
 
 (provide 'riot)
