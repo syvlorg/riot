@@ -35,6 +35,7 @@
 (require 'meq)
 (require 'dash)
 (require 's)
+(require 'f)
 
 ;; Adapted From:
 ;; Answer: https://emacs.stackexchange.com/a/3402/31428
@@ -111,7 +112,7 @@
 
 (defun meq/ffns-advice (func &rest args)
     (let* ((input-buffer (apply func args))
-            (input (pop args))
+            (input (expand-file-name (pop args)))
             (split-input (split-string input "\\."))
             (ext (car (last split-input)))
             (ext-name (meq/get-ext-name-from-ext (intern ext)))
@@ -121,22 +122,22 @@
                       (concat (meq/timestamp) "." (car (last split-output))))))
 	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
             input-buffer
-            (apply #'call-process
-              "pandoc"
-              nil
-              nil
-              nil
-              input
-              "-f"
-              (symbol-name ext-name)
-              "-t"
-              "org"
-              "-so"
-              output
-              (cdr (assoc 'org meq/var/riot-alists)))
+            (when (f-exists? input)
+              (apply #'call-process
+                "pandoc"
+                nil
+                nil
+                nil
+                input
+                "-f"
+                (symbol-name ext-name)
+                "-t"
+                "org"
+                "-so"
+                output
+                (cdr (assoc 'org meq/var/riot-alists))))
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
             (unwind-protect (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
-
 (advice-add #'find-file-noselect :around #'meq/ffns-advice)
 
 (provide 'riot)
