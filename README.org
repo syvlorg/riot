@@ -75,18 +75,16 @@
 (defun meq/riot-naming-output (split-output file)
   (apply #'f-join (append (butlast split-output) (list file))))
 
+(defun meq/convert-outgoing (ext-name)
+  (let* ((ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
+          (split-bfn (split-string buffer-file-name "\\."))
+          (split-output (f-split (meq/riot-naming-input split-bfn ext))))
+    (meq/riot-naming-output split-output (s-chop-suffix "." (string-join
+                                          (cdr (split-string (car (last split-output)) "\\."))
+                                          ".")))))
+
 (defun meq/after-shave nil
-    (let* ((ext-name (meq/get-ext-name-from-file))
-	          (ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
-	          (split-bfn (split-string buffer-file-name "\\."))
-            (split-output (f-split (meq/riot-naming-input split-bfn ext)))
-            (output (meq/riot-naming-output
-                      split-output
-                      (s-chop-suffix
-                        "."
-                        (string-join
-                          (cdr (split-string (car (last split-output)) "\\."))
-                          ".")))))
+    (let* ((ext-name (meq/get-ext-name-from-file)))
         (when ext-name
             (apply #'call-process
               "pandoc"
@@ -99,7 +97,7 @@
               "-t"
               (symbol-name ext-name)
               "-so"
-              output
+              (meq/convert-outgoing ext-name)
               (cdr (assoc ext-name meq/var/riot-alists))))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
@@ -110,16 +108,22 @@
     (mapc #'(lambda (fcons) (interactive) (kill-buffer (get-file-buffer (car fcons)))) meq/var/riot-list))
 (add-hook 'kill-emacs-hook #'meq/before-kill-emacs)
 
+(defun meq/convert-incoming (input)
+  (let* ((split-input (split-string input "\\."))
+          (ext (car (last split-input)))
+          (ext-name (meq/get-ext-name-from-ext (intern ext)))
+          (split-output (f-split (meq/riot-naming-input split-input "org"))))
+    `(:ext ,ext
+      :ext-name ,ext-name
+      :output ,(meq/riot-naming-output split-output (concat (meq/timestamp) "." (car (last split-output)))))))
+
 (defun meq/ffns-advice (func &rest args)
     (let* ((input-buffer (apply func args))
             (input (expand-file-name (pop args)))
-            (split-input (split-string input "\\."))
-            (ext (car (last split-input)))
-            (ext-name (meq/get-ext-name-from-ext (intern ext)))
-            (split-output (f-split (meq/riot-naming-input split-input "org")))
-            (output (meq/riot-naming-output
-                      split-output
-                      (concat (meq/timestamp) "." (car (last split-output))))))
+            (output* (meq/convert-incoming input))
+            (ext (cl-getf output* :ext))
+            (ext-name (cl-getf output* :ext-name))
+            (output (cl-getf output* :output)))
 	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
             input-buffer
             (when (f-exists? input)
