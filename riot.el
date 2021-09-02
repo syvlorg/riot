@@ -82,8 +82,8 @@
             (apply #'call-process
               "pandoc"
               nil
-              nil
-              nil
+              "*pandoc-outgoing*"
+              t
               buffer-file-name
               "-f"
               "org"
@@ -123,8 +123,8 @@
               (apply #'call-process
                 "pandoc"
                 nil
-                nil
-                nil
+                "*pandoc-incoming*"
+                t
                 input
                 "-f"
                 (symbol-name ext-name)
