@@ -32,6 +32,7 @@
 
 ;;; Code:
 
+(require 'a)
 (require 'meq)
 (require 'dash)
 (require 's)
@@ -45,22 +46,42 @@
 (defvar meq/var/riot-list nil)
 (defvar meq/var/riot-elist '(
     (asciidoc . adoc)
+    (creole . creole)
+    (csv . csv)
     (docbook5 . dbk)
+    (docx . docx)
     (dokuwiki . doku)
     (epub3 . epub)
+    (fb2 . fb2)
     (gfm . md)
     (haddock . hs)
     (html5 . html)
+    (icml . icml)
+    (ipynb . ipynb)
+    (jira . jira)
+    (json . json)
     (latex . tex)
+    (mediawiki . mediawiki)
+    (man . roff)
+    (muse . muse)
+    (native . ihs)
+    (odt . odt)
+    (opml . opml)
     (opendocument . xml)
     (org . org)
     (plain . txt)
+    (rtf . rtf)
+    (rst . rst)
+    (t2t . t2t)
+    (tei . tei)
     (texinfo . texi)
+    (textile . textile)
+    (twiki . twiki)
     (zimwiki . zim)))
 (defvar meq/var/riot-alists (mapcar #'(lambda (econs) (interactive) (cons (car econs) nil)) meq/var/riot-elist))
 
 ;;;###autoload
-(defun meq/update-elist (econs) (add-to-list 'meq/var/riot-elist econs))
+(defun meq/update-elist (&rest econs) (apply #'a-assoc 'meq/var/riot-elist econs))
 
 ;;;###autoload
 (defun meq/get-ext-name-from-file nil (interactive) (cdr (assoc buffer-file-name meq/var/riot-list)))
