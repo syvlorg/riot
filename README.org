@@ -84,7 +84,7 @@
 (defun meq/update-elist (&rest econs) (apply #'a-assoc 'meq/var/riot-elist econs))
 
 ;;;###autoload
-(defun meq/get-ext-name-from-file nil (interactive) (cdr (assoc buffer-file-name meq/var/riot-list)))
+(defun meq/get-ext-name-from-file nil (interactive) (a-get meq/var/riot-list buffer-file-name))
 
 ;;;###autoload
 (defun meq/get-ext-name-from-ext (&optional ext) (interactive)
@@ -160,7 +160,7 @@
                 "org"
                 "-so"
                 output
-                (cdr (assoc 'org meq/var/riot-alists))))
+                (a-get meq/var/riot-alists 'org)))
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
             (unwind-protect (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
 (advice-add #'find-file-noselect :around #'meq/ffns-advice)
