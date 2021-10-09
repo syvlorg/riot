@@ -1,10 +1,9 @@
-#!/usr/bin/env mdsh
-#+property: header-args -n -r -l "[{(<%s>)}]" :tangle-mode (identity 0444) :noweb yes :mkdirp yes
-#+startup: show3levels
+#+setupfile: ./settings/README.org
+#+include: ./settings/README.org
 
 * riot
 
-#+begin_src emacs-lisp :tangle riot.el
+#+begin_src emacs-lisp :tangle (meq/tangle-path)
 ;;; riot.el --- a simple package                     -*- lexical-binding: t; -*-
 
 ;; Copyright (C) 2021  Jeet Ray
