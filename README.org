@@ -1,6 +1,8 @@
 #+setupfile: ./settings/README.org
 #+include: ./settings/README.org
 
+Inspired by [[https://github.com/tecosaur][tecosaur's]] package [[https://github.com/tecosaur/org-pandoc-import][org-pandoc-import]].
+
 * riot
 
 #+begin_src emacs-lisp :tangle (meq/tangle-path)
