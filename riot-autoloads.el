@@ -18,7 +18,7 @@
 
 \(fn &optional EXT)" t nil)
 
-(register-definition-prefixes "riot" '("meq/"))
+(if (fboundp 'register-definition-prefixes) (register-definition-prefixes "riot" '("meq/")))
 
 ;;;***
 

@@ -3,7 +3,7 @@
 
 Inspired by [[https://github.com/tecosaur][tecosaur's]] package [[https://github.com/tecosaur/org-pandoc-import][org-pandoc-import]].
 
-* riot
+* riot.el
 
 #+begin_src emacs-lisp :tangle (meq/tangle-path)
 ;;; riot.el --- a simple package                     -*- lexical-binding: t; -*-
