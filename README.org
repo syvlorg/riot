@@ -1,6 +1,3 @@
-#+setupfile: ./settings/README.org
-#+include: ./settings/README.org
-
 Inspired by [[https://github.com/tecosaur][tecosaur's]] package [[https://github.com/tecosaur/org-pandoc-import][org-pandoc-import]].
 
 * riot.el
@@ -42,7 +39,7 @@ Inspired by [[https://github.com/tecosaur][tecosaur's]] package [[https://github
 ;; Adapted From:
 ;; Answer: https://emacs.stackexchange.com/a/3402/31428
 ;; User: https://emacs.stackexchange.com/users/105/drew
-(add-to-list 'org-pandoc-extensions '(asciidoc . adoc))
+(with-eval-after-load 'ox-pandoc (add-to-list 'org-pandoc-extensions '(asciidoc . adoc)))
 
 (defvar meq/var/riot-list nil)
 (defvar meq/var/riot-elist '(

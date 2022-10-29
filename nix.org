@@ -1,0 +1,97 @@
+* .envrc
+
+#+begin_src shell :tangle (meq/tangle-path)
+use nix
+#+end_src
+
+* shell.nix
+
+Adapted from [[https://github.com/edolstra/flake-compat#usage][here]]:
+
+#+begin_src nix :tangle (meq/tangle-path)
+with builtins; let
+    this-flake = import ./.;
+    flake = this-flake.inputs.titan or this-flake.inputs.settings.inputs.titan or (if (builtins ? getFlake) then (getFlake github:syvlorg/titan) else (import fetchTarball (let
+        lockExists = pathExists ./flake.lock;
+        lock = if lockExists then (fromJSON (readFile ./flake.lock)) else { nodes.titan.locked.rev = "main"; };
+    in {
+        url = "https://github.com/syvlorg/titan/archive/${lock.nodes.titan.locked.rev}.tar.gz";
+        ${if lockExists then "sha256" else null} = lock.nodes.titan.locked.narHash;
+    }) { src = ./.; }).defaultNix);
+    inherit (flake.${currentSystem}) pkgs;
+in with pkgs; mkShell rec {
+    buildInputs = [ titan ];
+    nativeBuildInputs = buildInputs;
+}
+#+end_src
+
+* default.nix
+
+Adapted from [[https://github.com/edolstra/flake-compat#usage][here]]:
+
+#+begin_src nix :tangle (meq/tangle-path)
+with builtins; if (builtins ? getFlake) then (getFlake (toString ./.)) else (import fetchTarball (let
+    lockExists = pathExists ./flake.lock;
+    lock = if lockExists then (fromJSON (readFile ./flake.lock)) else { nodes.flake-compat.locked.rev = "master"; };
+in {
+    url = "https://github.com/edolstra/flake-compat/archive/${lock.nodes.flake-compat.locked.rev}.tar.gz";
+    ${if lockExists then "sha256" else null} = lock.nodes.flake-compat.locked.narHash;
+}) { src = ./.; }).defaultNix
+#+end_src
+
+* flake.nix
+
+#+begin_src nix :tangle (meq/tangle-path)
+{
+    nixConfig = {
+        # Adapted From: https://github.com/divnix/digga/blob/main/examples/devos/flake.nix#L4
+        # extra-substituters = "https://cache.nixos.org/ https://nix-community.cachix.org/";
+        trusted-substituters = "https://cache.nixos.org/";
+        # extra-trusted-public-keys = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+        trusted-public-keys = "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY=";
+        # keep-derivations = true;
+        # keep-outputs = true;
+        extra-experimental-features = "nix-command flakes";
+        # accept-flake-config = true;
+        # show-trace = true;
+        # fallback = true;
+        # auto-optimise-store = true;
+        # builders-use-substitutes = true;
+        # cores = 0;
+        # flake-registry = https://raw.githubusercontent.com/sylvorg/settings/main/flake-registry.json;
+        # allow-unsafe-native-code-during-evaluation = true;
+        # min-free = 262144000;
+        # max-free = 1073741824;
+    };
+    description = "Automatically import supported filetypes as `org' on opening, then exporting back as the original type when saving!";
+    inputs = rec {
+        settings.url = github:sylvorg/settings;
+        titan.follows = "settings/titan";
+        nixpkgs.follows = "settings/nixpkgs";
+
+        epkg-meq.url = github:syvlorg/meq;
+
+        flake-utils.url = github:numtide/flake-utils;
+        flake-compat = {
+            url = "github:edolstra/flake-compat";
+            flake = false;
+        };
+    };
+    outputs = inputs@{ self, flake-utils, settings, ... }: with builtins; with settings.lib; with flake-utils.lib; settings.mkOutputs {
+        inherit inputs;
+        type = "emacs-nox";
+        pname = "riot";
+        callPackage = { emacs, pname }: emacs.pkgs.trivialBuild rec {
+            inherit pname;
+            src = ./.;
+            buildInputs = flatten [ emacs propagatedUserEnvPkgs ];
+            propagatedUserEnvPkgs = with emacs.pkgs; flatten [ meq meq.propagatedUserEnvPkgs a ];
+            meta = {
+              inherit (emacs.meta) platforms;
+              homepage = "https://github.com/syvlorg/${pname}";
+              description = "Automatically import supported filetypes as `org' on opening, then exporting back as the original type when saving!";
+            };
+        };
+    };
+}
+#+end_src
