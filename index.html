@@ -3,18 +3,18 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2022-11-14 Mon 05:51 -->
+<!-- 2023-09-04 Mon 12:28 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>&lrm;</title>
-<meta name="generator" content="Org mode" />
 <meta name="author" content="Jeet Ray" />
-<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/primary/syvl.css" />
-<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
-<link rel="icon" href="https://combinatronics.io/sylvorg/settings/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
-<link rel="manifest" href="https://combinatronics.io/sylvorg/settings/main/manifest.json" />
-<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/settings/main/src/styles/highlight/paraiso-dark.min.css" />
-<script src="https://combinatronics.io/sylvorg/settings/main/src/scripts/highlight/highlight.min.js"></script>
+<meta name="generator" content="Org Mode" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/bundle/main/src/styles/primary/syvl.css" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/bundle/main/src/icons/favicons/shiny-zigzagoon-galar.ico" sizes="any" />
+<link rel="icon" href="https://combinatronics.io/sylvorg/bundle/main/src/icons/favicons/shiny-zigzagoon-galar.svg" />
+<link rel="manifest" href="https://combinatronics.io/sylvorg/bundle/main/manifest.json" />
+<link rel="stylesheet" type="text/css" href="https://combinatronics.io/sylvorg/bundle/main/src/styles/highlight/paraiso-dark.min.css" />
+<script src="https://combinatronics.io/sylvorg/bundle/main/src/scripts/highlight/highlight.min.js"></script>
 <script>hljs.highlightAll();</script>
 <div class="header">
 <h1>We Are Syvlorg.</h1>
@@ -24,36 +24,14 @@
 <a href="https://resume.syvl.org">Résumé</a>
 <a href="https://index.syvl.org">Index</a>
 </div>
-<script type="text/javascript">
-// @license magnet:?xt=urn:btih:e95b018ef3580986a04669f1b5879592219e2a7a&dn=public-domain.txt Public Domain
-<!--/*--><![CDATA[/*><!--*/
-     function CodeHighlightOn(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.add("code-highlighted");
-         target.classList.add("code-highlighted");
-       }
-     }
-     function CodeHighlightOff(elem, id)
-     {
-       var target = document.getElementById(id);
-       if(null != target) {
-         elem.classList.remove("code-highlighted");
-         target.classList.remove("code-highlighted");
-       }
-     }
-    /*]]>*///-->
-// @license-end
-</script>
 </head>
 <body>
-<div id="content">
-<div id="table-of-contents">
+<div id="content" class="content">
+<div id="table-of-contents" role="doc-toc">
 <h2>Table of Contents</h2>
-<div id="text-table-of-contents">
+<div id="text-table-of-contents" role="doc-toc">
 <ul>
-<li><a href="#org833506a">riot.el</a></li>
+<li><a href="#orga70fea9">riot.el</a></li>
 </ul>
 </div>
 </div>
@@ -61,50 +39,50 @@
 Inspired by <a href="https://github.com/tecosaur">tecosaur's</a> package <a href="https://github.com/tecosaur/org-pandoc-import">org-pandoc-import</a>.
 </p>
 
-<div id="outline-container-org833506a" class="outline-2">
-<h2 id="org833506a">riot.el</h2>
-<div class="outline-text-2" id="text-org833506a">
+<div id="outline-container-orga70fea9" class="outline-2">
+<h2 id="orga70fea9">riot.el</h2>
+<div class="outline-text-2" id="text-orga70fea9">
 <div class="org-src-container">
-<pre><code class="language-lisp match-braces rainbow-braces">;;; riot.el --- a simple package                     -*- lexical-binding: t; -*-
+<pre><code class="language-lisp match-braces rainbow-braces"><span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">riot.el --- a simple package                     -*- lexical-binding: t; -*-</span>
 
-;; Copyright (C) 2021  Jeet Ray
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Copyright (C) 2021  Jeet Ray</span>
 
-;; Author: Jeet Ray &lt;aiern@protonmail.com&gt;
-;; Keywords: lisp
-;; Version: 0.0.1
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Author: Jeet Ray <a href="mailto:aiern%40protonmail.com">&lt;aiern@protonmail.com&gt;</a></span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Keywords: lisp</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Version: 0.0.1</span>
 
-;; This program is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, either version 3 of the License, or
-;; (at your option) any later version.
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This program is free software; you can redistribute it and/or modify</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">it under the terms of the GNU General Public License as published by</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">the Free Software Foundation, either version 3 of the License, or</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">(at your option) any later version.</span>
 
-;; This program is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">This program is distributed in the hope that it will be useful,</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">GNU General Public License for more details.</span>
 
-;; You should have received a copy of the GNU General Public License
-;; along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">You should have received a copy of the GNU General Public License</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">along with this program.  If not, see <a href="http://www.gnu.org/licenses/">&lt;http://www.gnu.org/licenses/&gt;</a>.</span>
 
-;;; Commentary:
+<span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">Commentary:</span>
 
-;; Put a description of the package here
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Put a description of the package here</span>
 
-;;; Code:
+<span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">Code:</span>
 
-(require 'a)
-(require 'meq)
-(require 'dash)
-(require 's)
-(require 'f)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">a</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">meq</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">dash</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">s</span>)
+(<span style="font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">f</span>)
 
-;; Adapted From:
-;; Answer: https://emacs.stackexchange.com/a/3402/31428
-;; User: https://emacs.stackexchange.com/users/105/drew
-(with-eval-after-load 'ox-pandoc (add-to-list 'org-pandoc-extensions '(asciidoc . adoc)))
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Adapted From:</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">Answer: https://emacs.stackexchange.com/a/3402/31428</span>
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">User: https://emacs.stackexchange.com/users/105/drew</span>
+(<span style="font-weight: bold;">with-eval-after-load</span> 'ox-pandoc (add-to-list 'org-pandoc-extensions '(asciidoc . adoc)))
 
-(defvar meq/var/riot-list nil)
-(defvar meq/var/riot-elist '(
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">meq/var/riot-list</span> nil)
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">meq/var/riot-elist</span> '(
     (asciidoc . adoc)
     (creole . creole)
     (csv . csv)
@@ -138,95 +116,95 @@ Inspired by <a href="https://github.com/tecosaur">tecosaur's</a> package <a href
     (textile . textile)
     (twiki . twiki)
     (zimwiki . zim)))
-(defvar meq/var/riot-alists (mapcar #'(lambda (econs) (interactive) (cons (car econs) nil)) meq/var/riot-elist))
+(<span style="font-weight: bold;">defvar</span> <span style="font-weight: bold; font-style: italic;">meq/var/riot-alists</span> (mapcar #'(<span style="font-weight: bold;">lambda</span> (econs) (<span style="font-weight: bold;">interactive</span>) (cons (car econs) nil)) meq/var/riot-elist))
 
-;;;###autoload
-(defun meq/update-elist (&amp;rest econs) (apply #'a-assoc 'meq/var/riot-elist econs))
+<span style="font-weight: bold; font-style: italic;">;;;</span><span style="font-weight: bold; font-style: italic;">###</span><span style="font-weight: bold; font-style: italic;">autoload</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/update-elist</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> econs) (apply #'a-assoc 'meq/var/riot-elist econs))
 
-;;;###autoload
-(defun meq/get-ext-name-from-file nil (interactive) (a-get meq/var/riot-list buffer-file-name))
+<span style="font-weight: bold; font-style: italic;">;;;</span><span style="font-weight: bold; font-style: italic;">###</span><span style="font-weight: bold; font-style: italic;">autoload</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/get-ext-name-from-file</span> nil (<span style="font-weight: bold;">interactive</span>) (a-get meq/var/riot-list buffer-file-name))
 
-;;;###autoload
-(defun meq/get-ext-name-from-ext (&amp;optional ext) (interactive)
-  (car (rassoc (or ext (meq/get-ext)) meq/var/riot-elist)))
+<span style="font-weight: bold; font-style: italic;">;;;</span><span style="font-weight: bold; font-style: italic;">###</span><span style="font-weight: bold; font-style: italic;">autoload</span>
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/get-ext-name-from-ext</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> ext) (<span style="font-weight: bold;">interactive</span>)
+  (car (rassoc (<span style="font-weight: bold;">or</span> ext (meq/get-ext)) meq/var/riot-elist)))
 
-(defun meq/riot-naming-input (split-input ext)
-  (s-chop-suffix "." (string-join (append (butlast split-input) (list ext)) ".")))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/riot-naming-input</span> (split-input ext)
+  (s-chop-suffix <span style="font-style: italic;">"."</span> (string-join (append (butlast split-input) (list ext)) <span style="font-style: italic;">"."</span>)))
 
-(defun meq/riot-naming-output (split-output file)
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/riot-naming-output</span> (split-output file)
   (apply #'f-join (append (butlast split-output) (list file))))
 
-(defun meq/convert-outgoing (ext-name)
-  (let* ((ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
-          (split-bfn (split-string buffer-file-name "\\."))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/convert-outgoing</span> (ext-name)
+  (<span style="font-weight: bold;">let*</span> ((ext (symbol-name (cdr (assoc ext-name meq/var/riot-elist))))
+          (split-bfn (split-string buffer-file-name <span style="font-style: italic;">"\\."</span>))
           (split-output (f-split (meq/riot-naming-input split-bfn ext))))
-    (meq/riot-naming-output split-output (s-chop-suffix "." (string-join
-                                          (cdr (split-string (car (last split-output)) "\\."))
-                                          ".")))))
+    (meq/riot-naming-output split-output (s-chop-suffix <span style="font-style: italic;">"."</span> (string-join
+                                          (cdr (split-string (car (last split-output)) <span style="font-style: italic;">"\\."</span>))
+                                          <span style="font-style: italic;">"."</span>)))))
 
-(defun meq/after-shave nil
-    (let* ((ext-name (meq/get-ext-name-from-file)))
-        (when ext-name
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/after-shave</span> nil
+    (<span style="font-weight: bold;">let*</span> ((ext-name (meq/get-ext-name-from-file)))
+        (<span style="font-weight: bold;">when</span> ext-name
             (apply #'call-process
-              "pandoc"
+              <span style="font-style: italic;">"pandoc"</span>
               nil
-              (generate-new-buffer "*pandoc-outgoing*")
+              (generate-new-buffer <span style="font-style: italic;">"*pandoc-outgoing*"</span>)
               nil
               buffer-file-name
-              "-f"
-              "org"
-              "-t"
+              <span style="font-style: italic;">"-f"</span>
+              <span style="font-style: italic;">"org"</span>
+              <span style="font-style: italic;">"-t"</span>
               (symbol-name ext-name)
-              "-so"
+              <span style="font-style: italic;">"-so"</span>
               (meq/convert-outgoing ext-name)
               (cdr (assoc ext-name meq/var/riot-alists))))))
 (add-hook 'after-save-hook #'meq/after-shave)
 
-(defun meq/before-kill-buffer nil (interactive) (when (meq/get-ext-name-from-file) (delete-file buffer-file-name)))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/before-kill-buffer</span> nil (<span style="font-weight: bold;">interactive</span>) (<span style="font-weight: bold;">when</span> (meq/get-ext-name-from-file) (delete-file buffer-file-name)))
 (add-hook 'kill-buffer-hook #'meq/before-kill-buffer)
 
-(defun meq/before-kill-emacs nil (interactive)
-    (mapc #'(lambda (fcons) (interactive) (kill-buffer (get-file-buffer (car fcons)))) meq/var/riot-list))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/before-kill-emacs</span> nil (<span style="font-weight: bold;">interactive</span>)
+    (mapc #'(<span style="font-weight: bold;">lambda</span> (fcons) (<span style="font-weight: bold;">interactive</span>) (kill-buffer (get-file-buffer (car fcons)))) meq/var/riot-list))
 (add-hook 'kill-emacs-hook #'meq/before-kill-emacs)
 
-(defun meq/convert-incoming (input)
-  (let* ((split-input (split-string input "\\."))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/convert-incoming</span> (input)
+  (<span style="font-weight: bold;">let*</span> ((split-input (split-string input <span style="font-style: italic;">"\\."</span>))
           (ext (car (last split-input)))
           (ext-name (meq/get-ext-name-from-ext (intern ext)))
-          (split-output (f-split (meq/riot-naming-input split-input "org"))))
-    `(:ext ,ext
-      :ext-name ,ext-name
-      :output ,(meq/riot-naming-output split-output (concat (meq/timestamp) "." (car (last split-output)))))))
+          (split-output (f-split (meq/riot-naming-input split-input <span style="font-style: italic;">"org"</span>))))
+    `(<span style="font-weight: bold;">:ext</span> ,ext
+      <span style="font-weight: bold;">:ext-name</span> ,ext-name
+      <span style="font-weight: bold;">:output</span> ,(meq/riot-naming-output split-output (concat (meq/timestamp) <span style="font-style: italic;">"."</span> (car (last split-output)))))))
 
-(defun meq/ffns-advice (func &amp;rest args)
-    (let* ((input-buffer (apply func args))
-            (input (expand-file-name (pop args)))
+(<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/ffns-advice</span> (func <span style="font-weight: bold; text-decoration: underline;">&amp;rest</span> args)
+    (<span style="font-weight: bold;">let*</span> ((input-buffer (apply func args))
+            (input (expand-file-name (<span style="font-weight: bold;">pop</span> args)))
             (output* (meq/convert-incoming input))
-            (ext (cl-getf output* :ext))
-            (ext-name (cl-getf output* :ext-name))
-            (output (cl-getf output* :output)))
-	(if (not (and (rassoc (intern ext) meq/var/riot-elist) (not (string= ext "org"))))
+            (ext (cl-getf output* <span style="font-weight: bold;">:ext</span>))
+            (ext-name (cl-getf output* <span style="font-weight: bold;">:ext-name</span>))
+            (output (cl-getf output* <span style="font-weight: bold;">:output</span>)))
+        (<span style="font-weight: bold;">if</span> (not (<span style="font-weight: bold;">and</span> (rassoc (intern ext) meq/var/riot-elist) (not (string= ext <span style="font-style: italic;">"org"</span>))))
             input-buffer
-            (when (f-exists? input)
+            (<span style="font-weight: bold;">when</span> (f-exists? input)
               (apply #'call-process
-                "pandoc"
+                <span style="font-style: italic;">"pandoc"</span>
                 nil
-                (generate-new-buffer "*pandoc-incoming*")
+                (generate-new-buffer <span style="font-style: italic;">"*pandoc-incoming*"</span>)
                 nil
                 input
-                "-f"
+                <span style="font-style: italic;">"-f"</span>
                 (symbol-name ext-name)
-                "-t"
-                "org"
-                "-so"
+                <span style="font-style: italic;">"-t"</span>
+                <span style="font-style: italic;">"org"</span>
+                <span style="font-style: italic;">"-so"</span>
                 output
                 (a-get meq/var/riot-alists 'org)))
             (add-to-list 'meq/var/riot-list `(,output . ,ext-name))
-            (unwind-protect (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
-(advice-add #'find-file-noselect :around #'meq/ffns-advice)
+            (<span style="font-weight: bold;">unwind-protect</span> (apply func `(,output ,@args)) (kill-buffer (get-file-buffer input))))))
+(advice-add #'find-file-noselect <span style="font-weight: bold;">:around</span> #'meq/ffns-advice)
 
-(provide 'riot)
-;;; riot.el ends here
+(<span style="font-weight: bold;">provide</span> '<span style="font-weight: bold; text-decoration: underline;">riot</span>)
+<span style="font-weight: bold; font-style: italic;">;;; </span><span style="font-weight: bold; font-style: italic;">riot.el ends here</span>
 </code></pre>
 </div>
 </div>
@@ -234,7 +212,7 @@ Inspired by <a href="https://github.com/tecosaur">tecosaur's</a> package <a href
 </div>
 <div id="postamble" class="status">
 <p class="author">Author: Jeet Ray</p>
-<p class="date">Created: 2022-11-14 Mon 05:51</p>
+<p class="date">Created: 2023-09-04 Mon 12:28</p>
 <p class="validation"><a href="https://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
