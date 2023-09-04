@@ -151,8 +151,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1668643220,
-        "narHash": "sha256-92BpLq1tLTetSayCLzROjjyOITC7+md6jfeWp8q3pXQ=",
+        "lastModified": 1693845203,
+        "narHash": "sha256-VXSHn0V8F9yYOIEyD/iy6iS4t0YvxFekOnkLxtkIDAY=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -217,8 +217,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts_2"
       },
       "locked": {
-        "lastModified": 1668643220,
-        "narHash": "sha256-92BpLq1tLTetSayCLzROjjyOITC7+md6jfeWp8q3pXQ=",
+        "lastModified": 1693845203,
+        "narHash": "sha256-VXSHn0V8F9yYOIEyD/iy6iS4t0YvxFekOnkLxtkIDAY=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -372,34 +372,34 @@
     "dhall-python": {
       "flake": false,
       "locked": {
-        "lastModified": 1686965692,
-        "narHash": "sha256-WiKVRYlahwr+kdEPt+PcIec5EdsSd2IywI5DjdLMo+0=",
+        "lastModified": 1689895655,
+        "narHash": "sha256-IIyocpdouSHe19cEqSPBD7IeQVfgi8r64WfNm1QPNFY=",
         "owner": "s-zeng",
         "repo": "dhall-python",
-        "rev": "cc14abd1f102959f8d27476514e64f1730b14ecc",
+        "rev": "9d3ca74e67129a29b3e824ae82f6dab8e28e9b52",
         "type": "github"
       },
       "original": {
         "owner": "s-zeng",
         "repo": "dhall-python",
-        "rev": "cc14abd1f102959f8d27476514e64f1730b14ecc",
+        "rev": "9d3ca74e67129a29b3e824ae82f6dab8e28e9b52",
         "type": "github"
       }
     },
     "dhall-python_2": {
       "flake": false,
       "locked": {
-        "lastModified": 1686965692,
-        "narHash": "sha256-WiKVRYlahwr+kdEPt+PcIec5EdsSd2IywI5DjdLMo+0=",
+        "lastModified": 1689895655,
+        "narHash": "sha256-IIyocpdouSHe19cEqSPBD7IeQVfgi8r64WfNm1QPNFY=",
         "owner": "s-zeng",
         "repo": "dhall-python",
-        "rev": "cc14abd1f102959f8d27476514e64f1730b14ecc",
+        "rev": "9d3ca74e67129a29b3e824ae82f6dab8e28e9b52",
         "type": "github"
       },
       "original": {
         "owner": "s-zeng",
         "repo": "dhall-python",
-        "rev": "cc14abd1f102959f8d27476514e64f1730b14ecc",
+        "rev": "9d3ca74e67129a29b3e824ae82f6dab8e28e9b52",
         "type": "github"
       }
     },
@@ -420,8 +420,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1668329648,
-        "narHash": "sha256-lqxA+VSR2yw1/vZtRq5LToF7JNbNWh1mR/FkyrBiQuA=",
+        "lastModified": 1693845203,
+        "narHash": "sha256-RBeYcrzjrE+SByFiBTgmkGPFeZDOXsJSE1W/fTSp51M=",
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/.emacs.d/lib/meq"
       },
@@ -2192,11 +2192,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1693844389,
-        "narHash": "sha256-NlYZenNmDl5txgrUeCD0e+LF7yhgdDF2sQ9O+E0aRP8=",
+        "lastModified": 1693845799,
+        "narHash": "sha256-GuTalKo4syodpKavtAEJp+GjSRiFnkOYgZaXdSHMTaU=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "f0aa19bb8900ac5997350cdcf0fe32db99048337",
+        "rev": "72f3f5d0ef0a2407cd206f95a9e43d9651c3732e",
         "type": "github"
       },
       "original": {
@@ -2207,11 +2207,11 @@
     },
     "nur_2": {
       "locked": {
-        "lastModified": 1693844389,
-        "narHash": "sha256-NlYZenNmDl5txgrUeCD0e+LF7yhgdDF2sQ9O+E0aRP8=",
+        "lastModified": 1693845799,
+        "narHash": "sha256-GuTalKo4syodpKavtAEJp+GjSRiFnkOYgZaXdSHMTaU=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "f0aa19bb8900ac5997350cdcf0fe32db99048337",
+        "rev": "72f3f5d0ef0a2407cd206f95a9e43d9651c3732e",
         "type": "github"
       },
       "original": {
@@ -3082,8 +3082,8 @@
         "sh": "sh"
       },
       "locked": {
-        "lastModified": 1692983719,
-        "narHash": "sha256-FsAf5iZqv+8Gb/QFPECgHkEMUgVMCiPNPhz92KLBK1U=",
+        "lastModified": 1693845202,
+        "narHash": "sha256-dfcCQdGbQ32QW9PFJwkzVAulIKLtOujqw6f5QeDUjoY=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/valiant"
@@ -3114,8 +3114,8 @@
         "sh": "sh_2"
       },
       "locked": {
-        "lastModified": 1692983719,
-        "narHash": "sha256-FsAf5iZqv+8Gb/QFPECgHkEMUgVMCiPNPhz92KLBK1U=",
+        "lastModified": 1693845202,
+        "narHash": "sha256-dfcCQdGbQ32QW9PFJwkzVAulIKLtOujqw6f5QeDUjoY=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/valiant"
