@@ -33,7 +33,7 @@
     "Automatically import supported filetypes as `org' on opening, then exporting back as the original type when saving!";
   inputs = rec {
     bundle = {
-      url = "git+https://github.com/sylvorg/bundle.git";
+      url = "https://github.com/sylvorg/bundle.git";
       type = "git";
       submodules = true;
     };
