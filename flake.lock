@@ -151,8 +151,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1693874961,
-        "narHash": "sha256-1TvKG6WuYPh6FBh8Ch3icJ3vCkwlIfnLf7Jrh2Sm9i0=",
+        "lastModified": 1693888681,
+        "narHash": "sha256-ae0wXP9u0zJaCcJqh+3uW/tJCnydgtIT38PY16Jc8VE=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -217,8 +217,8 @@
         "xero-figlet-fonts": "xero-figlet-fonts_2"
       },
       "locked": {
-        "lastModified": 1693874961,
-        "narHash": "sha256-1TvKG6WuYPh6FBh8Ch3icJ3vCkwlIfnLf7Jrh2Sm9i0=",
+        "lastModified": 1693888681,
+        "narHash": "sha256-ae0wXP9u0zJaCcJqh+3uW/tJCnydgtIT38PY16Jc8VE=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/bundle"
@@ -420,8 +420,8 @@
         ]
       },
       "locked": {
-        "lastModified": 1693875175,
-        "narHash": "sha256-5nybDI6UteofmejA06hBq1BaoNEWkilw/NQH+HC2k3o=",
+        "lastModified": 1693888751,
+        "narHash": "sha256-oE+OFDG9UOAo8QIsrgw7S31gt/2BZV4ufzShO0IcnVE=",
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/.emacs.d/lib/meq"
       },
@@ -2198,11 +2198,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1693878030,
-        "narHash": "sha256-AThkjxxhFg/yw8MNNLw0g37cdo1th4SO2gdayBu0SEA=",
+        "lastModified": 1693884678,
+        "narHash": "sha256-KY5b5XWXcJxzbe8EkwZC2OULF3ml8p/UhwhJjY/qzgA=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "a2d61643ebf93243c5a74bb5d27aa6d654638275",
+        "rev": "46c86c327cc8591c861d065edc82939aa156d074",
         "type": "github"
       },
       "original": {
@@ -2213,11 +2213,11 @@
     },
     "nur_2": {
       "locked": {
-        "lastModified": 1693878030,
-        "narHash": "sha256-AThkjxxhFg/yw8MNNLw0g37cdo1th4SO2gdayBu0SEA=",
+        "lastModified": 1693884678,
+        "narHash": "sha256-KY5b5XWXcJxzbe8EkwZC2OULF3ml8p/UhwhJjY/qzgA=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "a2d61643ebf93243c5a74bb5d27aa6d654638275",
+        "rev": "46c86c327cc8591c861d065edc82939aa156d074",
         "type": "github"
       },
       "original": {
@@ -3088,8 +3088,8 @@
         "sh": "sh"
       },
       "locked": {
-        "lastModified": 1693874959,
-        "narHash": "sha256-WGv93ilkMcw3Yjte3Y+5iewgBzXbnoLc0eNC9RWM198=",
+        "lastModified": 1693888680,
+        "narHash": "sha256-LyCcw9AF1U8fxw1KolT5t/ch/cnKtQoAHF/9PSc642U=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/valiant"
@@ -3120,8 +3120,8 @@
         "sh": "sh_2"
       },
       "locked": {
-        "lastModified": 1693874959,
-        "narHash": "sha256-WGv93ilkMcw3Yjte3Y+5iewgBzXbnoLc0eNC9RWM198=",
+        "lastModified": 1693888680,
+        "narHash": "sha256-LyCcw9AF1U8fxw1KolT5t/ch/cnKtQoAHF/9PSc642U=",
         "submodules": true,
         "type": "git",
         "url": "file:///home/shadowrylander/shadowrylander/sylveon/syvlorg/valiant"
