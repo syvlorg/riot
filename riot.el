@@ -81,7 +81,7 @@
 
 ;;;###autoload
 (defun meq/get-ext-name-from-ext (&optional ext) (interactive)
-  (car (rassoc (or ext (meq/get-ext)) meq/var/riot-elist)))
+  (car (rassoc (or ext (meq/get-ext-name-from-file)) meq/var/riot-elist)))
 
 (defun meq/riot-naming-input (split-input ext)
   (s-chop-suffix "." (string-join (append (butlast split-input) (list ext)) ".")))
