@@ -126,7 +126,7 @@ Inspired by <a href="https://github.com/tecosaur">tecosaur's</a> package <a href
 
 <span style="font-weight: bold; font-style: italic;">;;;</span><span style="font-weight: bold; font-style: italic;">###</span><span style="font-weight: bold; font-style: italic;">autoload</span>
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/get-ext-name-from-ext</span> (<span style="font-weight: bold; text-decoration: underline;">&amp;optional</span> ext) (<span style="font-weight: bold;">interactive</span>)
-  (car (rassoc (<span style="font-weight: bold;">or</span> ext (meq/get-ext)) meq/var/riot-elist)))
+  (car (rassoc (<span style="font-weight: bold;">or</span> ext (meq/get-ext-name-from-file)) meq/var/riot-elist)))
 
 (<span style="font-weight: bold;">defun</span> <span style="font-weight: bold;">meq/riot-naming-input</span> (split-input ext)
   (s-chop-suffix <span style="font-style: italic;">"."</span> (string-join (append (butlast split-input) (list ext)) <span style="font-style: italic;">"."</span>)))
