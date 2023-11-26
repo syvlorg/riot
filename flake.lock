@@ -92,7 +92,6 @@
         "org": "org",
         "org-contrib": "org-contrib",
         "pacapt": "pacapt",
-        "riot": "riot",
         "s": "s",
         "saku": "saku",
         "sysget": "sysget",
@@ -103,11 +102,11 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1700992195,
-        "narHash": "sha256-urZ3WtClaYCT1N7CaEUfB673tr8fIHg+5/XDPe/HvHc=",
+        "lastModified": 1700995953,
+        "narHash": "sha256-kxSOGVGP1SYaSjp6Sp3Z/OOyc2JrOVmt9VgSVbr0fn0=",
         "ref": "refs/heads/main",
-        "rev": "4ac578f0c9411f8446a793fb9c595b1e655bb78a",
-        "revCount": 250,
+        "rev": "0e3ca8a7892175cc5870fed72a7eaf69b0f280c1",
+        "revCount": 251,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/sylvorg/bundle.git"
@@ -905,11 +904,11 @@
     },
     "nixos-master": {
       "locked": {
-        "lastModified": 1701054083,
-        "narHash": "sha256-gE6USSQJ52eJWwJd81zyPl5xMzculUKzt8YdTO96RQ8=",
+        "lastModified": 1701056540,
+        "narHash": "sha256-VY7cy+f9TmsWHVxi/zn15Nkx+xgb0pYTb/6NC7/kY4g=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "f43ae9ce53ae527d619ade458985d97a54079059",
+        "rev": "43d1fa0dc83e4db3cb2c87a169c1615bd7f57d03",
         "type": "github"
       },
       "original": {
@@ -1127,11 +1126,11 @@
     },
     "nur": {
       "locked": {
-        "lastModified": 1701050629,
-        "narHash": "sha256-7XirQpplmxvzA7KJiGtyU+fV14+YIOo9dHS+LnN0Hpk=",
+        "lastModified": 1701058359,
+        "narHash": "sha256-Q61lHoddLHT8t9QQ02/wzYAsgF1w5WjQdJQYQ0mFGZQ=",
         "owner": "nix-community",
         "repo": "nur",
-        "rev": "a0e751e325d83b0350a32afe946bc3ca46ebe095",
+        "rev": "503b834c86a5fcebe8c824e9a2f9ccade2f1e9fa",
         "type": "github"
       },
       "original": {
@@ -1365,22 +1364,6 @@
         "owner": "adamchainz",
         "ref": "1.5.0",
         "repo": "pytest-reverse",
-        "type": "github"
-      }
-    },
-    "riot": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1700992167,
-        "narHash": "sha256-igFi8PR49e2Lp7eO/qvQW+D056P6qsXGRpY1UaeHrrc=",
-        "owner": "syvlorg",
-        "repo": "riot",
-        "rev": "9b7172865ff99239c1eea9730decd0eaebc843d4",
-        "type": "github"
-      },
-      "original": {
-        "owner": "syvlorg",
-        "repo": "riot",
         "type": "github"
       }
     },
