@@ -39,10 +39,6 @@
     };
     valiant.follows = "bundle/valiant";
     nixpkgs.follows = "bundle/nixpkgs";
-
-    ePkg-meq.url =
-      "git+https://github.com/syvlorg/meq.git";
-
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
