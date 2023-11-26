@@ -106,10 +106,6 @@ else
     };
     valiant.follows = "bundle/valiant";
     nixpkgs.follows = "bundle/nixpkgs";
-
-    ePkg-meq.url =
-      <<input-path-exists(path="../meq", url="github:syvlorg/meq")>>;
-
     flake-utils.url = "github:numtide/flake-utils";
     flake-compat = {
       url = "github:edolstra/flake-compat";
@@ -128,7 +124,7 @@ else
           inherit self inputs emacs;
           package = rec {
             src = ./.;
-            propagatedUserEnvPkgs = toList emacs.pkgs.a;
+            propagatedUserEnvPkgs = with emacs.pkgs; [ a dash s f ];
             meta.description =
               "Automatically import supported filetypes as `org' on opening, then exporting back as the original type when saving!";
           };

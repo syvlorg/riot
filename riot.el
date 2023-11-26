@@ -26,7 +26,6 @@
 ;;; Code:
 
 (require 'a)
-(require 'meq)
 (require 'dash)
 (require 's)
 (require 'f)
@@ -35,6 +34,9 @@
 ;; Answer: https://emacs.stackexchange.com/a/3402/31428
 ;; User: https://emacs.stackexchange.com/users/105/drew
 (with-eval-after-load 'ox-pandoc (add-to-list 'org-pandoc-extensions '(asciidoc . adoc)))
+
+;;;###autoload
+(defun meq/timestamp nil (interactive) (format-time-string "%Y%m%d%H%M%S%N"))
 
 (defvar meq/var/riot-list nil)
 (defvar meq/var/riot-elist '(
