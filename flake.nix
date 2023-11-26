@@ -36,7 +36,6 @@
       url = "https://github.com/sylvorg/bundle.git";
       type = "git";
       submodules = true;
-      inputs.riot.follows = "";
     };
     valiant.follows = "bundle/valiant";
     nixpkgs.follows = "bundle/nixpkgs";

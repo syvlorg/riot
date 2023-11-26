@@ -103,7 +103,6 @@ else
       url = <<input-path-exists(path="../../../bundle", url="https://github/sylvorg/bundle", submodule='t)>>;
       type = "git";
       submodules = true;
-      inputs.riot.follows = "";
     };
     valiant.follows = "bundle/valiant";
     nixpkgs.follows = "bundle/nixpkgs";

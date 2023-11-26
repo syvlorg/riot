@@ -92,7 +92,7 @@
         "org": "org",
         "org-contrib": "org-contrib",
         "pacapt": "pacapt",
-        "riot": [],
+        "riot": "riot",
         "s": "s",
         "saku": "saku",
         "sysget": "sysget",
@@ -103,11 +103,11 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1700992128,
-        "narHash": "sha256-AzHNxhmafXLzGRAIHizIH4y6IchwsJVAaOPHNgIaaB0=",
+        "lastModified": 1700992195,
+        "narHash": "sha256-urZ3WtClaYCT1N7CaEUfB673tr8fIHg+5/XDPe/HvHc=",
         "ref": "refs/heads/main",
-        "rev": "c5e02fba48639c72dcc28627a7cfc087ca07136c",
-        "revCount": 249,
+        "rev": "4ac578f0c9411f8446a793fb9c595b1e655bb78a",
+        "revCount": 250,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/sylvorg/bundle.git"
@@ -1365,6 +1365,22 @@
         "owner": "adamchainz",
         "ref": "1.5.0",
         "repo": "pytest-reverse",
+        "type": "github"
+      }
+    },
+    "riot": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1700992167,
+        "narHash": "sha256-igFi8PR49e2Lp7eO/qvQW+D056P6qsXGRpY1UaeHrrc=",
+        "owner": "syvlorg",
+        "repo": "riot",
+        "rev": "9b7172865ff99239c1eea9730decd0eaebc843d4",
+        "type": "github"
+      },
+      "original": {
+        "owner": "syvlorg",
+        "repo": "riot",
         "type": "github"
       }
     },
