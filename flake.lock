@@ -102,11 +102,11 @@
         "xero-figlet-fonts": "xero-figlet-fonts"
       },
       "locked": {
-        "lastModified": 1700995953,
-        "narHash": "sha256-kxSOGVGP1SYaSjp6Sp3Z/OOyc2JrOVmt9VgSVbr0fn0=",
+        "lastModified": 1700996211,
+        "narHash": "sha256-NMFUCdEWWIwoy0Cg0EoMYX5tomPbPsHWrfIzTtnsRbE=",
         "ref": "refs/heads/main",
-        "rev": "0e3ca8a7892175cc5870fed72a7eaf69b0f280c1",
-        "revCount": 251,
+        "rev": "232fb79f5baae2ec8dcebab7f21f01ec6a2203c9",
+        "revCount": 252,
         "submodules": true,
         "type": "git",
         "url": "https://github.com/sylvorg/bundle.git"

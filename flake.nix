@@ -57,7 +57,7 @@
           inherit self inputs emacs;
           package = rec {
             src = ./.;
-            propagatedUserEnvPkgs = toList emacs.pkgs.a;
+            propagatedUserEnvPkgs = with emacs.pkgs; [ a dash s f ];
             meta.description =
               "Automatically import supported filetypes as `org' on opening, then exporting back as the original type when saving!";
           };
